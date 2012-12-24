@@ -1,4 +1,8 @@
-Openfire2Queuemetrics-Plugin
+README for Queuemetrics-ofLogger
 ============================
 
-A plugin for Openfire to provide realtime agent sessions and status to Queuemetrics
+Introduction
+============
+
+The Queuemetric-ofLogger is a plugin for the Openfire XMPP server to provide realtime agent
+sessions and status to Queuemetrics.
