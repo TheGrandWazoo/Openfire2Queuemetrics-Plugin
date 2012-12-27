@@ -20,7 +20,15 @@ import org.jivesoftware.openfire.session.Session;
 import org.jivesoftware.openfire.XMPPServer;
 import org.jivesoftware.util.JiveGlobals;
 import org.jivesoftware.util.LocaleUtils;
-import org.jivesoftware.util.Log;
+/*
+ * Comment out the two lines below for compiling against OF3.7.0 and below.
+ */
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+/*
+ * And uncomment the below line for compiling against OF3.7.0 and below.
+ */
+// import org.jivesoftware.util.Log;
 import org.jivesoftware.util.PropertyEventDispatcher;
 import org.jivesoftware.util.PropertyEventListener;
 
@@ -51,6 +59,10 @@ public class QueuemetricsLoggerPlugin implements Plugin
 	protected XMPPServer server;
 	protected PresenceLayerer presenceHandler;
 	private QueuemetricsLoggerSessionEventListener listener = new QueuemetricsLoggerSessionEventListener();
+	/*
+	 * Comment out the line below for compiling against OF3.7.0 and below.
+	 */
+	private static final Logger Log = LoggerFactory.getLogger(QueuemetricsLoggerPlugin.class);
 	private PropertyListener propertyListener;
 	private Boolean isComponentReady;
 	private Boolean pluginEnabled;
@@ -202,14 +214,14 @@ public class QueuemetricsLoggerPlugin implements Plugin
 					pstmtInsert.close();
 				}
 			} catch (Exception e) {
-				Log.error(e);
+				Log.error(e.getMessage(), e);
 			}
 			try {
 				if (con != null) {
 					con.close();
 				}
 			} catch (Exception e) {
-				Log.error(e);
+				Log.error(e.getMessage(), e);
 			}
 		}
 	}
@@ -255,14 +267,14 @@ public class QueuemetricsLoggerPlugin implements Plugin
 					pstmtInsert.close();
 				}
 			} catch (Exception e) {
-				Log.error(e);
+				Log.error(e.getMessage(), e);
 			}
 			try {
 				if (con != null) {
 					con.close();
 				}
 			} catch (Exception e) {
-				Log.error(e);
+				Log.error(e.getMessage(), e);
 			}
 		}
 	}
@@ -297,13 +309,13 @@ public class QueuemetricsLoggerPlugin implements Plugin
 					pstmtSelect.close();
 				}
 			} catch (Exception e) {
-				Log.error(e);
+				Log.error(e.getMessage(), e);
 			}
 			try {
 				if (con != null) {
 					con.close();}
 			} catch (Exception e) {
-				 Log.error(e);
+				Log.error(e.getMessage(), e);
 			}
 		}
 		return(userID);
@@ -437,13 +449,13 @@ public class QueuemetricsLoggerPlugin implements Plugin
 					pstmtSelect.close();
 				}
 			} catch (Exception e) {
-				Log.error(e);
+				Log.error(e.getMessage(), e);
 			}
 			try {
 				if (con != null) {
 					con.close();}
 			} catch (Exception e) {
-				 Log.error(e);
+				Log.error(e.getMessage(), e);
 			}
 		}
 		return(pauseCode);
